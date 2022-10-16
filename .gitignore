@@ -1,0 +1,12 @@
+# Python
+*.pyc
+venv/
+
+# Anki
+*.ankiaddon
+src/meta.json
+ankidata/
+src/vendor/
+
+# General
+TODO.md

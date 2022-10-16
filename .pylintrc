@@ -1,0 +1,17 @@
+[MASTER]
+extension-pkg-whitelist=PyQt6,PyQt5
+ignore-paths=ankidata,venv
+
+[REPORTS]
+output-format=colorized
+
+[MESSAGES CONTROL]
+disable=
+  missing-module-docstring,
+  missing-class-docstring,
+  missing-function-docstring,
+  unused-argument,
+
+[BASIC]
+good-names =
+  mw

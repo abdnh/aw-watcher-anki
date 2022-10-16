@@ -1,0 +1,1 @@
+- `testing`: Add watcher events to ActivityWatch's testing instance (Run using `aws-server --testing`).
