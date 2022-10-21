@@ -38,8 +38,6 @@ def watch() -> None:
                 heartbeat_data = {"cid": cid, "deck": deck, "nid": nid}
                 now = datetime.now(timezone.utc)
                 heartbeat_event = Event(timestamp=now, data=heartbeat_data)
-
-                # print(f"Sending {heartbeat_data}")
                 client.heartbeat(
                     bucket_id,
                     heartbeat_event,
@@ -48,8 +46,6 @@ def watch() -> None:
                     commit_interval=4.0,
                 )
             sleep(poll_time)
-
-    # print("shutting down aw_watcher")
 
 
 def on_done(fut: Future) -> None:

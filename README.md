@@ -1,5 +1,7 @@
-[ActivityWatch](https://activitywatch.net/) watcher for Anki implemented as an Anki add-on. Work in progress. Maybe do not use yet!
+[ActivityWatch](https://activitywatch.net/) watcher for Anki implemented as an Anki add-on.
 
-## References
+Currently the add-on monitors reviews and sends the following types of data to ActivityWatch: the card ID, note ID, and deck name.
 
-https://docs.activitywatch.net/en/latest/examples/writing-watchers.html
+You can view your Anki activity in ActivityWatch's Web interface by going to the _Raw Data_ section and opening the _anki-watcher_ bucket.
+
+I may extend the add-on to monitor more types of events in the future (e.g. how much time the user spends in adding/editing cards)
