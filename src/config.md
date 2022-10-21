@@ -1,2 +1,2 @@
 - `poll_time`: Interval in seconds by which the add-on sends status updates to ActivityWatch.
-- `testing`: Add watcher events to ActivityWatch's testing instance (Ran using `aws-server --testing`).
+- `testing`: If `true`, adds watcher events to ActivityWatch's testing instance (Requires that you run `aws-server` using `aws-server --testing`).
