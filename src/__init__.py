@@ -25,9 +25,9 @@ def watch() -> None:
     client = ActivityWatchClient("anki-client", testing=CONFIG["testing"])
     bucket_id = f"anki-watcher_{client.client_hostname}"
     client.create_bucket(bucket_id, event_type="app.anki.activity")
+    poll_time = float(CONFIG["poll_time"])
 
     with client:
-        sleeptime = 1
         while mw.col:
             card = mw.reviewer.card
             if card:
@@ -43,11 +43,11 @@ def watch() -> None:
                 client.heartbeat(
                     bucket_id,
                     heartbeat_event,
-                    pulsetime=sleeptime + 1,
+                    pulsetime=poll_time + 1,
                     queued=True,
                     commit_interval=4.0,
                 )
-            sleep(sleeptime)
+            sleep(poll_time)
 
     # print("shutting down aw_watcher")
 
