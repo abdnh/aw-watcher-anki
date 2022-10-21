@@ -19,6 +19,7 @@ from aw_client.config import load_config
 from aw_core.models import Event
 
 CONFIG = mw.addonManager.getConfig(__name__)
+PULSE_TIME = 60
 
 
 def watch() -> None:
@@ -43,7 +44,7 @@ def watch() -> None:
                 client.heartbeat(
                     bucket_id,
                     heartbeat_event,
-                    pulsetime=poll_time + 1,
+                    pulsetime=PULSE_TIME,
                     queued=True,
                     commit_interval=4.0,
                 )
