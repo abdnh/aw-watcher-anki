@@ -34,9 +34,8 @@ def watch() -> None:
             if card:
                 cid = card.id
                 nid = card.nid
-                did = card.did
                 deck = mw.col.decks.name(card.did)
-                heartbeat_data = {"cid": cid, "did": did, "deck": deck, "nid": nid}
+                heartbeat_data = {"cid": cid, "deck": deck, "nid": nid}
                 now = datetime.now(timezone.utc)
                 heartbeat_event = Event(timestamp=now, data=heartbeat_data)
 
