@@ -24,7 +24,7 @@ CONFIG = mw.addonManager.getConfig(__name__)
 def watch() -> None:
     client = ActivityWatchClient("anki-client", testing=CONFIG["testing"])
     bucket_id = f"anki-watcher_{client.client_hostname}"
-    client.create_bucket(bucket_id, event_type="app.anki.activity")
+    client.create_bucket(bucket_id, event_type="app.anki.review")
     poll_time = float(CONFIG["poll_time"])
 
     with client:
