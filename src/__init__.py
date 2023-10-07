@@ -6,6 +6,7 @@ from time import sleep
 
 import requests
 from anki.collection import Collection
+from anki.utils import pointVersion
 from aqt import gui_hooks, mw
 from aqt.utils import showWarning
 
@@ -66,7 +67,10 @@ then restart Anki.""",
 
 
 def on_collection_did_load(col: Collection) -> None:
-    mw.taskman.run_in_background(watch, on_done)
+    if pointVersion() >= 230100:
+        mw.taskman.run_in_background(watch, on_done, uses_collection=False) # type: ignore
+    else:
+        mw.taskman.run_in_background(watch, on_done)
 
 
 gui_hooks.collection_did_load.append(on_collection_did_load)
