@@ -1,0 +1,83 @@
+exclude: "venv|vendor|build"
+default_stages: [commit]
+
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.4.0
+      hooks:
+          - id: trailing-whitespace
+          - id: end-of-file-fixer
+          - id: check-json
+            exclude: ".vscode(.dist)?/.*"
+          - id: check-yaml
+          - id: check-builtin-literals
+          - id: check-case-conflict
+          - id: check-docstring-first
+          - id: check-shebang-scripts-are-executable
+          - id: mixed-line-ending
+          - id: detect-private-key
+
+    - repo: https://github.com/psf/black
+      rev: 23.7.0
+      hooks:
+          - id: black
+
+    - repo: https://github.com/PyCQA/isort
+      rev: 5.12.0
+      hooks:
+          - id: isort
+
+    - repo: local
+      hooks:
+          - id: pylint
+            name: pylint
+            entry: python -m pylint src tests
+            language: system
+            types: [python]
+            require_serial: true
+          - id: mypy
+            name: mypy
+            entry: python -m mypy
+            language: system
+            types: [python]
+            require_serial: true
+          - id: pyupgrade
+            name: pyupgrade
+            entry: pyupgrade --py38-plus
+            language: system
+            types: [python]
+            require_serial: true
+          - id: pip-compile
+            name: pip-compile base
+            entry: python -m ankiscripts.update_deps --type base
+            language: system
+            files: ^(requirements/base\.(in|txt))$
+            pass_filenames: false
+            require_serial: true
+          - id: pip-compile
+            name: pip-compile bundle
+            entry: python -m ankiscripts.update_deps --type bundle
+            language: system
+            files: ^(requirements/bundle\.(in|txt))$
+            pass_filenames: false
+            require_serial: true
+          - id: pip-compile
+            name: pip-compile dev
+            entry: python -m ankiscripts.update_deps --type dev
+            language: system
+            files: ^(requirements/dev\.(in|txt))$
+            pass_filenames: false
+            require_serial: true
+
+    - repo: https://github.com/pre-commit/mirrors-prettier
+      rev: v3.0.1
+      hooks:
+          - id: prettier
+            args: ["--tab-width", "4", "--write"]
+            exclude: "ankiweb_page.html"
+            exclude_types: [python]
+
+ci:
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false

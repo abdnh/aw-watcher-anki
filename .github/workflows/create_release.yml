@@ -1,0 +1,42 @@
+name: Create Release
+
+on:
+    create:
+        tags:
+            - "*"
+permissions:
+    contents: write
+jobs:
+    create-release:
+        name: Create Release
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  submodules: recursive
+                  fetch-depth: 0
+
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: 3.9
+
+            - name: Install dependencies
+              run: .github/workflows/install_deps.sh
+
+            - name: Create packages
+              run: make vendor && make
+
+            - name: Extract changes
+              shell: bash
+              run: |
+                  python -m ankiscripts.changes ${{ github.ref }} > build/RELEASE.md
+
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              if: startsWith(github.ref, 'refs/tags/')
+              with:
+                  files: build/*.ankiaddon
+                  body_path: build/RELEASE.md

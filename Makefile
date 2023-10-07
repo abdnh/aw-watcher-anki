@@ -1,31 +1,33 @@
-.PHONY: all zip clean mypy pylint fix vendor aw-server
-all: zip
+.PHONY: all zip ankiweb vendor fix mypy pylint lint test sourcedist clean
 
-PACKAGE_NAME := aw_watcher
+all: zip ankiweb
 
-zip: $(PACKAGE_NAME).ankiaddon
+zip:
+	python -m ankiscripts.build --type package --qt all --exclude user_files/**/
 
-$(PACKAGE_NAME).ankiaddon: src/*
-	rm -f $@
-	find src/ -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
-	( cd src/; zip -r ../$@ * -x meta.json )
+ankiweb:
+	python -m ankiscripts.build --type ankiweb --qt all --exclude user_files/**/
 
 vendor:
-	pip install -r requirements.txt -t src/vendor
+	python -m ankiscripts.vendor
 
 fix:
-	python -m black src --exclude="vendor"
-	python -m isort src
+	python -m black src tests --exclude="forms|vendor"
+	python -m isort src tests
 
 mypy:
-	python -m mypy src
+	-python -m mypy src tests
 
 pylint:
-	python -m pylint src
+	-python -m pylint src tests
 
-# Run aw-server in testing mode (Windows)
-aw-server:
-	pwsh -Command "cd $$env:LOCALAPPDATA ; .\Programs\ActivityWatch\aw-server\aw-server.exe --testing"
+lint: mypy pylint
+
+test:
+	python -m  pytest --cov=src --cov-config=.coveragerc
+
+sourcedist:
+	python -m ankiscripts.sourcedist
 
 clean:
-	rm -f $(PACKAGE_NAME).ankiaddon
+	rm -rf build/

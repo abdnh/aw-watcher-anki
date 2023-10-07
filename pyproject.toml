@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anki_aw_watcher"
+authors = [{ name = "Abdo", email = "abdo@abdnh.net" }]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+dynamic = ["dependencies", "optional-dependencies", "version"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements/bundle.txt"] }
+optional-dependencies.dev = { file = ["requirements/dev.txt"] }
+
+[tool.setuptools]
+package-dir = { "anki_aw_watcher" = "src" }
+
+[tool.setuptools_scm]
+
+[project.urls]
+Repository = "https://github.com/abdnh/aw-watcher-anki"

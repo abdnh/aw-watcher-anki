@@ -1,17 +1,32 @@
 [MASTER]
 extension-pkg-whitelist=PyQt6,PyQt5
-ignore-paths=ankidata,venv
+ignore = venv,ankidata,vendor,forms,user_files,build
 
 [REPORTS]
 output-format=colorized
 
 [MESSAGES CONTROL]
 disable=
+  line-too-long,
+  too-many-lines,
+  missing-function-docstring,
   missing-module-docstring,
   missing-class-docstring,
-  missing-function-docstring,
+  import-outside-toplevel,
+  wrong-import-position,
+  wrong-import-order,
+  fixme,
+  unused-wildcard-import,
+  attribute-defined-outside-init,
+  redefined-builtin,
+  wildcard-import,
+  broad-except,
+  bare-except,
   unused-argument,
-
-[BASIC]
-good-names =
-  mw
+  unused-variable,
+  redefined-outer-name,
+  global-statement,
+  protected-access,
+  arguments-renamed,
+  consider-using-f-string,
+  invalid-name

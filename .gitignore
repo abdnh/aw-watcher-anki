@@ -1,12 +1,16 @@
-# Python
-*.pyc
+__pycache__/
+*.egg-info/
 venv/
-
-# Anki
-*.ankiaddon
-src/meta.json
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+.coverage
 ankidata/
-src/vendor/
-
-# General
+build/
+src/manifest.json
+src/meta.json
+src/forms/
+src/user_files/*/
+vendor/
+node_modules/
 TODO.md

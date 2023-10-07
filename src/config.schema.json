@@ -1,0 +1,11 @@
+{
+    "properties": {
+        "poll_time": {
+            "type": "number"
+        },
+        "testing": {
+            "type": "boolean"
+        }
+    },
+    "type": "object"
+}
