@@ -1,6 +1,6 @@
 anki==2.1.66
     # via aqt
-ankiscripts @ git+https://github.com/abdnh/ankiscripts@7bddba01f74471618a2cc6de9aca5821344eb03b
+ankiscripts @ git+https://github.com/abdnh/ankiscripts@eff333857945ea9587942b9f34a2b6d42a26b589
     # via -r requirements/dev.in
 ankiutils @ git+https://github.com/abdnh/ankiutils@b5c5dfd2a16446781cc2de06fdbd019cfa733c94
     # via -r requirements\bundle.in
@@ -22,7 +22,7 @@ beautifulsoup4==4.12.2
     #   aqt
 black==23.9.1
     # via -r requirements/dev.in
-blinker==1.6.2
+blinker==1.6.3
     # via flask
 build==1.0.3
     # via pip-tools

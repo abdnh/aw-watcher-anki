@@ -12,5 +12,5 @@ pyupgrade
 pytest
 pytest-cov
 pre-commit
-ankiscripts[forms] @ git+https://github.com/abdnh/ankiscripts@7bddba01f74471618a2cc6de9aca5821344eb03b
+ankiscripts[forms] @ git+https://github.com/abdnh/ankiscripts@eff333857945ea9587942b9f34a2b6d42a26b589
 types-requests
