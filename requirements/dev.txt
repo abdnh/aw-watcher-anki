@@ -1,6 +1,6 @@
 anki==2.1.66
     # via aqt
-ankiscripts @ git+https://github.com/abdnh/ankiscripts@eff333857945ea9587942b9f34a2b6d42a26b589
+ankiscripts @ git+https://github.com/abdnh/ankiscripts@ed96ad699fe9dd52e6baec92e4619664fe28fd15
     # via -r requirements/dev.in
 ankiutils @ git+https://github.com/abdnh/ankiutils@b5c5dfd2a16446781cc2de06fdbd019cfa733c94
     # via -r requirements\bundle.in
